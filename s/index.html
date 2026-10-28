@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NovaDio · Bu şarkı sana geldi</title>
+<meta property="og:title" content="🎁 Bu şarkı sana geldi — NovaDio">
+<meta property="og:description" content="Bir arkadaşın radyoda duyduğu şarkıyı sana hediye etti. Dinlemek için dokun.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0e0b16">
+<style>
+  :root { --bg:#0e0b16; --card:#17121f; --text:#ece8f5; --muted:#a79fbc; --accent:#b06cff; --accent2:#ff6a9f; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:radial-gradient(1200px 600px at 50% -10%, #2a1a4a 0%, var(--bg) 60%); color:var(--text);
+         font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; min-height:100vh; }
+  main { max-width:440px; margin:0 auto; padding:28px 16px 48px; }
+  .brand { display:flex; align-items:center; gap:10px; color:var(--muted); font-weight:700; letter-spacing:.3px; }
+  .brand .dot { width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent2)); }
+  h1 { font-size:22px; margin:22px 0 6px; }
+  .sub { color:var(--muted); margin:0 0 18px; }
+  .card { background:var(--card); border-radius:22px; padding:18px; box-shadow:0 20px 60px rgba(0,0,0,.45); }
+  .cover { width:100%; aspect-ratio:1/1; border-radius:16px; object-fit:cover; background:#241a33; display:block; }
+  .cover.ph { display:flex; align-items:center; justify-content:center; font-size:72px; }
+  .title { font-size:22px; font-weight:900; margin:14px 0 2px; line-height:1.2; }
+  .artist { color:var(--muted); font-size:16px; margin:0; }
+  .station { color:var(--muted); font-size:13px; margin:10px 0 0; }
+  .note { margin:14px 0 0; padding:12px 14px; border-radius:14px; background:rgba(255,255,255,.05); font-style:italic; }
+  .btn { display:flex; align-items:center; justify-content:center; gap:10px; width:100%; padding:15px 16px; margin-top:12px;
+         border-radius:16px; font-weight:800; font-size:16px; text-decoration:none; color:#fff; border:0; cursor:pointer; }
+  .primary { background:linear-gradient(135deg,var(--accent),var(--accent2)); }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px; }
+  .row .btn { margin:0; font-size:14px; padding:13px 10px; background:rgba(255,255,255,.08); }
+  .small { color:var(--muted); font-size:12.5px; text-align:center; margin-top:18px; }
+  .small a { color:var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <div class="brand"><span class="dot"></span>NovaDio</div>
+  <h1 id="h">🎁 Bu şarkı sana geldi</h1>
+  <p class="sub" id="sub">Bir arkadaşın radyoda duyduğu şarkıyı sana hediye etti.</p>
+
+  <div class="card">
+    <img id="cover" class="cover" alt="" hidden>
+    <div id="coverph" class="cover ph">🎵</div>
+    <div class="title" id="t">—</div>
+    <p class="artist" id="a"></p>
+    <p class="station" id="st"></p>
+    <div class="note" id="n" hidden></div>
+
+    <a class="btn primary" id="open" href="#">▶ <span id="openTxt">NovaDio'da dinle</span></a>
+    <div class="row">
+      <a class="btn" id="spotify" target="_blank" rel="noopener">Spotify</a>
+      <a class="btn" id="ytm" target="_blank" rel="noopener">YouTube Music</a>
+      <a class="btn" id="yt" target="_blank" rel="noopener">YouTube</a>
+      <a class="btn" id="am" target="_blank" rel="noopener">Apple Music</a>
+    </div>
+  </div>
+
+  <p class="small" id="foot">NovaDio: dünyanın tüm radyoları, geri sarma ve mikrofonsuz şarkı tanıma ile. <a id="store" href="#">Ücretsiz indir</a></p>
+</main>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var title = q.get('t') || '';
+  var artist = q.get('a') || '';
+  var station = q.get('st') || '';
+  var uuid = q.get('u') || '';
+  var cover = q.get('c') || '';
+  var note = q.get('n') || '';
+  var lang = (q.get('l') || navigator.language || 'en').slice(0, 2).toLowerCase();
+  var tr = lang === 'tr';
+  var ua = navigator.userAgent || '';
+  var ios = /iPhone|iPad|iPod/i.test(ua);
+  var android = /Android/i.test(ua);
+
+  var PLAY = 'https://play.google.com/store/apps/details?id=com.novadio.app';
+  var APPSTORE = 'https://apps.apple.com/app/id6820916744';
+  var store = ios ? APPSTORE : PLAY;
+
+  var L = tr ? {
+    h: '🎁 Bu şarkı sana geldi',
+    sub: 'Bir arkadaşın radyoda duyduğu şarkıyı sana hediye etti.',
+    open: 'NovaDio’da dinle',
+    at: 'NovaDio’da ' + station + ' çalarken',
+    foot: 'NovaDio: dünyanın tüm radyoları, geri sarma ve mikrofonsuz şarkı tanıma ile.',
+    get: 'Ücretsiz indir'
+  } : {
+    h: '🎁 This song is for you',
+    sub: 'A friend heard this on the radio and sent it to you.',
+    open: 'Listen on NovaDio',
+    at: 'Heard on NovaDio · ' + station,
+    foot: 'NovaDio: every radio in the world, with rewind and song recognition.',
+    get: 'Get it free'
+  };
+  document.documentElement.lang = tr ? 'tr' : 'en';
+  document.title = 'NovaDio · ' + (artist ? artist + ' – ' : '') + title;
+  document.getElementById('h').textContent = L.h;
+  document.getElementById('sub').textContent = L.sub;
+  document.getElementById('t').textContent = title || 'NovaDio';
+  document.getElementById('a').textContent = artist;
+  document.getElementById('st').textContent = station ? L.at : '';
+  document.getElementById('openTxt').textContent = L.open;
+  document.getElementById('foot').firstChild.textContent = L.foot + ' ';
+  var storeA = document.getElementById('store');
+  storeA.textContent = L.get;
+  storeA.href = store;
+  if (note) { var n = document.getElementById('n'); n.textContent = '“' + note + '”'; n.hidden = false; }
+  if (cover && /^https?:\/\//.test(cover)) {
+    var img = document.getElementById('cover');
+    img.onload = function () { img.hidden = false; document.getElementById('coverph').hidden = true; };
+    img.src = cover;
+  }
+
+  var qstr = encodeURIComponent((artist ? artist + ' ' : '') + title);
+  document.getElementById('spotify').href = 'https://open.spotify.com/search/' + qstr;
+  document.getElementById('ytm').href = 'https://music.youtube.com/search?q=' + qstr;
+  document.getElementById('yt').href = 'https://www.youtube.com/results?search_query=' + qstr;
+  document.getElementById('am').href = 'https://music.apple.com/search?term=' + qstr;
+
+  // Open the station in the app when it is installed, else go to the store.
+  var deep = 'novadio://station/' + encodeURIComponent(uuid) +
+    '?t=' + encodeURIComponent(title) + '&a=' + encodeURIComponent(artist);
+  document.getElementById('open').addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!uuid || (!ios && !android)) { location.href = store; return; }
+    var left = Date.now();
+    var timer = setTimeout(function () {
+      if (Date.now() - left < 2500 && !document.hidden) location.href = store;
+    }, 1400);
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) clearTimeout(timer);
+    });
+    location.href = deep;
+  });
+})();
+</script>
+</body>
+</html>
