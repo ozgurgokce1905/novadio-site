@@ -27,7 +27,7 @@
 <body>
 <main>
   <h1>NovaDio – Privacy Policy</h1>
-  <p class="muted">Effective date: 29 October 2026 (first published 26 September 2026) · Developer: Ozgur Gokce</p>
+  <p class="muted">Effective date: 2 November 2026 (first published 26 September 2026) · Developer: Ozgur Gokce</p>
   <nav><a href="#en">English</a><a href="#tr">Türkçe</a></nav>
 
   <section id="en" class="card">
@@ -42,6 +42,7 @@
     <ul>
       <li>Language, country, theme, equalizer settings</li>
       <li>Favorite stations, recently played stations and the song history</li>
+      <li>A temporary rolling audio buffer (up to 30 minutes) used to pause and rewind live radio; it stays in the app's cache and is never uploaded</li>
     </ul>
     <p>You can delete the history in the app (Library) or remove all data by uninstalling the app.</p>
 
@@ -66,6 +67,11 @@
         short-lived access token from a small server run by the developer; that server receives no
         personal data and keeps no logs of what you listen to. Automatic recognition on stations that
         send no song names can be turned off in Settings.</li>
+      <li><b>Live captions (CC)</b> – when you turn on CC, a short piece of the station's audio stream
+        (never your microphone) is turned into text with Apple's speech recognition, which may process it
+        on Apple's servers; Android uses the device's speech recognition service. The recognized text
+        (only the text, no account or device identifier) is sent to Google's translation endpoint
+        (translate.googleapis.com) to translate it into your language. Nothing is stored by the developer.</li>
       <li><b>Gift links</b> – when you gift a song, the song name, the station and the note you typed
         are part of the link and card you choose to share; nothing is sent anywhere unless you share it.</li>
     </ul>
@@ -108,6 +114,7 @@
     <ul>
       <li>Dil, ülke, tema ve ekolayzır ayarları</li>
       <li>Favori istasyonlar, son dinlenenler ve şarkı geçmişi</li>
+      <li>Canlı radyoyu duraklatıp geri sarmak için geçici bir ses tamponu (en fazla 30 dakika); uygulama önbelleğinde tutulur, yüklenmez</li>
     </ul>
     <p>Geçmişi uygulamadan (Kitaplık) silebilir, uygulamayı kaldırarak tüm verileri silebilirsin.</p>
 
@@ -131,6 +138,11 @@
         küçük bir sunucudan kısa ömürlü bir erişim anahtarı alır; bu sunucuya kişisel veri gitmez ve
         ne dinlediğinin kaydı tutulmaz. Şarkı adı göndermeyen istasyonlardaki otomatik tanıma
         Ayarlar'dan kapatılabilir.</li>
+      <li><b>Canlı altyazı (CC)</b>: CC'yi açtığında istasyon yayınından (mikrofonundan asla değil) kısa
+        bir ses parçası Apple'ın konuşma tanımasıyla yazıya çevrilir; Apple bunu kendi sunucularında
+        işleyebilir, Android'de cihazın konuşma tanıma hizmeti kullanılır. Tanınan metin (yalnızca metin;
+        hesap veya cihaz kimliği yok) diline çevrilmek üzere Google'ın çeviri adresine
+        (translate.googleapis.com) gönderilir. Geliştirici hiçbir şey saklamaz.</li>
       <li><b>Hediye bağlantıları</b>: bir şarkıyı hediye ettiğinde şarkı adı, istasyon ve yazdığın
         not, paylaşmayı seçtiğin bağlantı ve kartın içinde yer alır; sen paylaşmadıkça hiçbir yere
         gönderilmez.</li>
