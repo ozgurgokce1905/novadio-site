@@ -27,7 +27,7 @@
 <body>
 <main>
   <h1>NovaDio – Privacy Policy</h1>
-  <p class="muted">Effective date: 2 November 2026 (first published 26 September 2026) · Developer: Ozgur Gokce</p>
+  <p class="muted">Effective date: 6 November 2026 (first published 26 September 2026) · Developer: Ozgur Gokce</p>
   <nav><a href="#en">English</a><a href="#tr">Türkçe</a></nav>
 
   <section id="en" class="card">
@@ -43,6 +43,8 @@
       <li>Language, country, theme, equalizer settings</li>
       <li>Favorite stations, recently played stations and the song history</li>
       <li>A temporary rolling audio buffer (up to 30 minutes) used to pause and rewind live radio; it stays in the app's cache and is never uploaded</li>
+      <li>Android: a small technical log of playback and caption events (station addresses, error codes; no personal data), kept in the app's own folder on your device and never uploaded</li>
+      <li>Android: the schedule of the daily reminders (12:30 and 18:30); the phone itself plans and shows them, no server sends them</li>
     </ul>
     <p>You can delete the history in the app (Library) or remove all data by uninstalling the app.</p>
 
@@ -69,7 +71,8 @@
         send no song names can be turned off in Settings.</li>
       <li><b>Live captions (CC)</b> – when you turn on CC, a short piece of the station's audio stream
         (never your microphone) is turned into text with Apple's speech recognition, which may process it
-        on Apple's servers; Android uses the device's speech recognition service. The recognized text
+        on Apple's servers; Android uses the phone's own speech recognition service on the device (if the
+        pack for the station's language is missing, Android downloads it once). The recognized text
         (only the text, no account or device identifier) is sent to Google's translation endpoint
         (translate.googleapis.com) to translate it into your language. Nothing is stored by the developer.</li>
       <li><b>Gift links</b> – when you gift a song, the song name, the station and the note you typed
@@ -77,6 +80,16 @@
     </ul>
     <p>Listening statistics ("My Radio Week") are calculated on your device from your own history and
       are shared only if you choose to share the card.</p>
+
+    <h3>Permissions – Android</h3>
+    <ul>
+      <li><b>Microphone</b> – asked only when you turn on CC, because Android's speech recognition
+        service requires this permission. The app gives it the station's audio; it does not listen to
+        or record your microphone, and nothing is saved.</li>
+      <li><b>Notifications</b> – for the playback controls and for the daily reminders, which you can
+        turn off in Settings → Daily reminders.</li>
+      <li><b>Location (approximate)</b> – optional, see above.</li>
+    </ul>
 
     <h3>Advertising (Google AdMob) – Android only</h3>
     <p>The iPhone/iPad version contains no ads and no advertising SDK. The free Android version
@@ -115,6 +128,8 @@
       <li>Dil, ülke, tema ve ekolayzır ayarları</li>
       <li>Favori istasyonlar, son dinlenenler ve şarkı geçmişi</li>
       <li>Canlı radyoyu duraklatıp geri sarmak için geçici bir ses tamponu (en fazla 30 dakika); uygulama önbelleğinde tutulur, yüklenmez</li>
+      <li>Android: oynatma ve altyazı olaylarının küçük bir teknik kaydı (istasyon adresleri, hata kodları; kişisel veri yok); cihazında uygulamanın kendi klasöründe tutulur, yüklenmez</li>
+      <li>Android: günlük hatırlatmaların (12:30 ve 18:30) planı; hatırlatmaları telefonun kendisi planlar ve gösterir, hiçbir sunucu göndermez</li>
     </ul>
     <p>Geçmişi uygulamadan (Kitaplık) silebilir, uygulamayı kaldırarak tüm verileri silebilirsin.</p>
 
@@ -140,7 +155,8 @@
         Ayarlar'dan kapatılabilir.</li>
       <li><b>Canlı altyazı (CC)</b>: CC'yi açtığında istasyon yayınından (mikrofonundan asla değil) kısa
         bir ses parçası Apple'ın konuşma tanımasıyla yazıya çevrilir; Apple bunu kendi sunucularında
-        işleyebilir, Android'de cihazın konuşma tanıma hizmeti kullanılır. Tanınan metin (yalnızca metin;
+        işleyebilir. Android'de telefonun kendi cihaz içi konuşma tanıma hizmeti kullanılır (istasyonun
+        dili için paket yoksa Android bunu bir kez indirir). Tanınan metin (yalnızca metin;
         hesap veya cihaz kimliği yok) diline çevrilmek üzere Google'ın çeviri adresine
         (translate.googleapis.com) gönderilir. Geliştirici hiçbir şey saklamaz.</li>
       <li><b>Hediye bağlantıları</b>: bir şarkıyı hediye ettiğinde şarkı adı, istasyon ve yazdığın
@@ -149,6 +165,16 @@
     </ul>
     <p>Dinleme istatistikleri ("Radyo Haftam") cihazında kendi geçmişinden hesaplanır ve yalnızca kartı
       paylaşmayı seçersen paylaşılır.</p>
+
+    <h3>İzinler – Android</h3>
+    <ul>
+      <li><b>Mikrofon</b>: yalnızca CC'yi açtığında istenir, çünkü Android'in konuşma tanıma hizmeti
+        bu izni gerektirir. Uygulama bu hizmete istasyonun sesini verir; mikrofonunu dinlemez veya
+        kaydetmez, hiçbir şey saklanmaz.</li>
+      <li><b>Bildirimler</b>: oynatma kontrolleri ve günlük hatırlatmalar için; hatırlatmaları
+        Ayarlar → Günlük hatırlatma'dan kapatabilirsin.</li>
+      <li><b>Konum (yaklaşık)</b>: isteğe bağlı, yukarıya bak.</li>
+    </ul>
 
     <h3>Reklamlar (Google AdMob) – yalnızca Android</h3>
     <p>iPhone/iPad sürümünde reklam ve reklam SDK'sı yoktur. Ücretsiz Android sürümü Google AdMob
